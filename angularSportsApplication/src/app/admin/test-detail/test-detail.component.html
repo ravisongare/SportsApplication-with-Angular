@@ -1,0 +1,51 @@
+
+
+  <h3 class="page-hero d-flex align-items-center justify-content-center">{{type}} D. {{date}}</h3>
+
+  <div>
+
+
+
+      <table class=" table   align-items-center justify-content-center">
+          <thead>
+            <tr>
+              <th>Ranking</th>
+              <th>Distance</th>
+              <th>Fitness</th>
+            </tr>
+          </thead>
+                <tbody>
+              <tr *ngFor="let item of detail,index as i">
+                  <td>
+                      <a [routerLink]="['/admin/tests',item.resultId,'edit']"  class="text-decoration-none" style="color:black"> {{i+1}}. {{item.name}}</a>
+                      {{count+1}}
+                  </td>
+                  <td>
+                      {{item.distance}}
+                  <td >
+                      {{item.fitness}}
+                  </td>
+
+              </tr>
+              </tbody>
+
+
+
+      </table>
+      <h6 class="page-hero d-flex align-items-center justify-content-center">(Click on player to change data)</h6>
+
+      <br>
+      <div >
+          <a [routerLink]="['/admin/add/athlete/',testid]" class="btn border-dark">ADD NEW ATHLELE TO TEST</a>
+      </div>
+      <br>
+      <div >
+          <a [routerLink]="['/admin/test',testid,'delete']" class=" btn border-dark">DELETE TEST</a>
+      </div>
+<!--
+      <div>
+          @*<a asp-action="Edit" asp-route-id="@Model.id">Edit</a> |*@
+          <a asp-action="Index">Back to List</a>
+      </div> -->
+
+  </div>

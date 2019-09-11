@@ -1,0 +1,82 @@
+<div class="cart">
+  <div class="cart-header">
+    <h1>User Registration</h1>
+  </div>
+  <div class="cart-body">
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="EmailId">Email</label>
+            <input class=" form-control" id="EmailId" type="text" formControlName="email" [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('email').touched ||
+                    registerForm.get('email').dirty) &&
+                  !registerForm.get('email').valid
+              }" />
+            <span class="invalid-feedback">
+              <span *ngIf="!!registerForm.get('email').errors?.required">
+                Please enter your valid email.
+              </span>
+            </span>
+          </div>
+          <div class="form-group">
+            <label for="PasswordId">Password</label>
+            <input class=" form-control" id="PasswordId" type="text" formControlName="password" [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('password').touched ||
+                    registerForm.get('password').dirty) &&
+                  !registerForm.get('password').valid
+              }" />
+            <span class="invalid-feedback">
+              <span *ngIf="!!registerForm.get('password').errors?.required">
+                Please enter your valid password.
+              </span>
+            </span>
+            <!-- <span class="errors" *ngIf= "registerForm.get('password').errors">Enter password</span> -->
+          </div>
+          <div class="form-group">
+            <label for="confirmPasswordId">Confirm Password</label>
+            <input class=" form-control" id="confirmPasswordId" type="text" formControlName="confirmPassword" [ngClass]="{
+                'is-invalid':
+                  ((registerForm.get('confirmPassword').touched ||
+                    registerForm.get('confirmPassword').dirty) &&
+                  !registerForm.get('confirmPassword').valid ) &&
+                  registerForm.get('password').value === registerForm.get('confirmPassword').value
+              }" />
+            <span class="invalid-feedback">
+              <span *ngIf="!!registerForm.get('confirmPassword').errors?.required">
+                please enter same password
+              </span>
+            </span>
+          </div>
+          <div class=" form-group">
+            <label for="roleId">Role</label>
+            <select id="roleId" class="form-control" formControlName="role" [ngClass]="{
+                'is-invalid':
+                  (registerForm.get('role').touched ||
+                    registerForm.get('role').dirty) &&
+                  !registerForm.get('role').valid
+              }">
+              <option value="" selected disabled> Choose</option>
+              <option value="Admin">Admin</option>
+              <option value="Athlete">Athlete</option>
+            </select>
+            <span class="invalid-feedback">
+              <span *ngIf="!!registerForm.get('role').errors?.required">
+                Please select role
+              </span>
+            </span>
+          </div>
+          <button class="btn btn-outline-primary" type="submit" [title]="
+              registerForm.valid
+                ? 'Save your entered data'
+                : 'Disabled until the form data is valid'
+            " [disabled]="!registerForm.valid">
+            submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

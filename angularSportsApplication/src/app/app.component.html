@@ -1,0 +1,36 @@
+<header>
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
+        <ul class="navbar-nav flex-grow-1">
+
+
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+
+
+          <li class="nav-item">
+            <a  *ngIf="!this.service.islogin()" class="nav-link text-dark" [routerLink]="['/register']" (click)="login()">Register</a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf='!!this.service.islogin()' class="nav-link text-dark" [routerLink]="['/login']" (click)="logout()">Logout {{this.username}}</a>
+            {{this.username}}
+            <a *ngIf="!this.service.islogin()" class="nav-link text-dark" [routerLink]="['/login']">login</a>
+          </li>
+
+           <!-- <button (click)="logout()" >logout</button> -->
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+

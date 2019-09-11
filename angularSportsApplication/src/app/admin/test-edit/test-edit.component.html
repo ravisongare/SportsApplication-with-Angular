@@ -1,0 +1,31 @@
+<h3>CHANGE DATA FOR ATHLETE</h3>
+<div class="row">
+  <div class="col-md-4">
+    <form [formGroup]='testForm'>
+
+    <div class="form-group">
+    <label for="athleteId" class="control-label"></label>
+    <div>
+
+    <select name="userid" id="athleteId"  class="form-control" formControlName="userid" >
+      <option *ngFor="let item of athlete " [ngValue]="item.id">{{item.name}}</option>
+    </select>
+    </div>
+    </div>
+    <div class="form-group">
+      <label for="distanceId">Distance</label>
+      <input type="text"
+             formControlName="distance"
+             class="form-control"
+             id="distanceId">
+
+    </div>
+    <button (click)="onSave()"  value="Save" class="btn border-dark col-5">Save</button>
+    </form>
+  </div>
+
+</div>
+<br>
+<a [routerLink]="['/admin/tests/result',resultid,'delete']" class="btn border-dark">Delete Athlete From Test</a>
+
+

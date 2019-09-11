@@ -1,0 +1,26 @@
+<p>add-athlete works!</p>
+
+<h1>AddAthlete</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form [formGroup]="athleteForm">
+            <div>
+                Name
+                <select formControlName="user_id" class="form-control">
+                    <option value="" selected disabled>--Select user--</option>
+                        <option *ngFor="let temp of athletes" [ngValue]="temp.id">{{temp.name}}</option>
+
+                </select>
+                <div class="form-group">
+                    <label for="distanceId" class="control-label"></label>
+                    <input id="distanceId" formControlName="distance" class="form-control" />
+
+                </div>
+            </div>
+            <div class="form-group">
+
+                <button class="btn btn-primary" type="submit" value="Save"  (click)="onSave()">Save</button>
+            </div>
+        </form>
+    </div>
+</div>

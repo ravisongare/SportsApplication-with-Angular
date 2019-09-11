@@ -1,0 +1,20 @@
+<h1>Athlete Details</h1>
+
+<div class="">
+<table class="table">
+    <tr>
+        <th>Type</th>
+        <th>Date</th>
+        <th>Detail</th>
+    </tr>
+
+
+    <tr *ngFor="let temp of test">
+        <td> {{temp.type}}</td>
+        <td> {{temp.date}}</td>
+        <td> <a [routerLink]="['/athlete/test',temp.resultId,'detail']"> Detail</a></td>
+    </tr>
+
+
+    </table>
+</div>
