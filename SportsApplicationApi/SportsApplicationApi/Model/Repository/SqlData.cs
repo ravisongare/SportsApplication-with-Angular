@@ -81,7 +81,7 @@ namespace SportsApplication.Models
                    on t.id equals r.test_id
                    where r.user_id.Equals(id)
                    select new AthlteDetail
-                   { type = t.type, Date = t.date, resultId = r.id };
+                   { type = t.type, Date = t.Date, resultId = r.id };
         }
 
         public List<Detail> GetDeatail(string id)

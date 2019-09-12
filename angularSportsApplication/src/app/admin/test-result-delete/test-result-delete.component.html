@@ -28,7 +28,7 @@
            Fitness
         </dt>
         <dd class = "col-sm-10">
-          {{result.Fitness}}
+          {{result.fitness}}
 
         </dd>
     </dl>
@@ -36,6 +36,6 @@
 
 
         <button type="submit" value="Delete" class="btn btn-danger" (click)="deleteConfirm()">delete</button> |
-        <a asp-action="Index">Back to List</a>
+        <a (click)="Back()">Cancel</a>
 
 </div>

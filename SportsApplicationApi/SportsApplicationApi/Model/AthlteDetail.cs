@@ -10,7 +10,7 @@ namespace SportsApplication.Models
 
         public int resultId { get; set; }
         public string type { get; set; }
-        public int Date { get; set; }
+        public  DateTime Date { get; set; }
     }
 
 }

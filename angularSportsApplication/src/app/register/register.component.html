@@ -20,16 +20,17 @@
               </span>
             </span>
           </div>
+          <div formGroupName="passwordGroup">
           <div class="form-group">
             <label for="PasswordId">Password</label>
             <input class=" form-control" id="PasswordId" type="text" formControlName="password" [ngClass]="{
                 'is-invalid':
-                  (registerForm.get('password').touched ||
-                    registerForm.get('password').dirty) &&
-                  !registerForm.get('password').valid
+                  (registerForm.get('passwordGroup.password').touched ||
+                    registerForm.get('passwordGroup.password').dirty) &&
+                  !registerForm.get('passwordGroup.password').valid
               }" />
             <span class="invalid-feedback">
-              <span *ngIf="!!registerForm.get('password').errors?.required">
+              <span *ngIf="!!registerForm.get('passwordGroup.password').errors?.required">
                 Please enter your valid password.
               </span>
             </span>
@@ -38,18 +39,21 @@
           <div class="form-group">
             <label for="confirmPasswordId">Confirm Password</label>
             <input class=" form-control" id="confirmPasswordId" type="text" formControlName="confirmPassword" [ngClass]="{
-                'is-invalid':
-                  ((registerForm.get('confirmPassword').touched ||
-                    registerForm.get('confirmPassword').dirty) &&
-                  !registerForm.get('confirmPassword').valid ) &&
-                  registerForm.get('password').value === registerForm.get('confirmPassword').value
+                'is-invalid': registerForm.get('passwordGroup').errors ||
+                            (registerForm.get('passwordGroup.confirmPassword').touched ||
+                            registerForm.get('passwordGroup.confirmPassword').dirty) &&
+                          !registerForm.get('passwordGroup.confirmPassword').valid
               }" />
             <span class="invalid-feedback">
-              <span *ngIf="!!registerForm.get('confirmPassword').errors?.required">
+              <span *ngIf="!!registerForm.get('passwordGroup.confirmPassword').errors?.required">
+                please enter  password
+              </span>
+              <span *ngIf="!registerForm.get('passwordGroup.confirmPassword').errors?.required && !!registerForm.get('passwordGroup').errors?.match">
                 please enter same password
               </span>
             </span>
           </div>
+        </div>
           <div class=" form-group">
             <label for="roleId">Role</label>
             <select id="roleId" class="form-control" formControlName="role" [ngClass]="{
@@ -58,7 +62,7 @@
                     registerForm.get('role').dirty) &&
                   !registerForm.get('role').valid
               }">
-              <option value="" selected disabled> Choose</option>
+              <option value="-1" selected disabled> Choose</option>
               <option value="Admin">Admin</option>
               <option value="Athlete">Athlete</option>
             </select>

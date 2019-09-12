@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../admin.service';
 import { Result } from '../models/result';
 import { JsonpInterceptor } from '@angular/common/http';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-test-result-delete',
@@ -14,7 +15,8 @@ export class TestResultDeleteComponent implements OnInit {
   result: Result;
   constructor(private route: ActivatedRoute,
               private service: AdminService,
-              private router: Router) { }
+              private router: Router,
+              private location: Location) { }
 
   ngOnInit() {
    this.reultid = +this.route.snapshot.paramMap.get('resultId');
@@ -27,9 +29,16 @@ export class TestResultDeleteComponent implements OnInit {
 
    );
   }
+  Back(): void {
+    this.location.back();
+  }
   deleteConfirm(): void {
- this.service.deleteTestresultConfirm(this.reultid).subscribe();
- this.router.navigate(['/admin/tests/' + this.result.test_id + '/detail']);
+ this.service.deleteTestresultConfirm(this.reultid).subscribe(
+   () => { this.router.navigate(['/admin/tests/' + this.result.test_id + '/detail']);
+
+   }
+ );
+
   }
 
 }

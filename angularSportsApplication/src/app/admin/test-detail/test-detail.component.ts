@@ -16,7 +16,7 @@ export class TestDetailComponent implements OnInit {
  detail: Detail[];
  test: Test;
  type: string;
- date: number;
+ date: Date;
  testid: string;
   constructor(private service: AdminService,
               private route: ActivatedRoute) { }

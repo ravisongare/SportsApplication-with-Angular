@@ -22,8 +22,10 @@ export class DeleteTestComponent implements OnInit {
     );
   }
   onDelete(): void {
-    this.service.deleteTest(this.testid).subscribe();
-    this.router.navigate(['/admin/tests']);
+    this.service.deleteTest(this.testid).subscribe(
+      () => this.router.navigate(['/admin/tests'])
+    );
+
   }
 
 }

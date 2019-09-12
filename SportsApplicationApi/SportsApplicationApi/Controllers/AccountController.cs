@@ -81,7 +81,7 @@ namespace SportsApplicationApi.Controllers
 
         [HttpPost,Route("register")]
         
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> Register([FromBody]RegisterViewModel model)
         {
             if (ModelState.IsValid)
             {

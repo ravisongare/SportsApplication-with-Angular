@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SportsApplicationApi.Migrations
 {
-    public partial class initialCreates : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,8 +51,7 @@ namespace SportsApplicationApi.Migrations
                 name: "Athletes",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    id = table.Column<string>(nullable: false),
                     name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -82,7 +81,7 @@ namespace SportsApplicationApi.Migrations
                 {
                     id = table.Column<string>(nullable: false),
                     type = table.Column<string>(nullable: true),
-                    date = table.Column<int>(nullable: false),
+                    Date = table.Column<DateTime>(nullable: false),
                     count = table.Column<int>(nullable: false),
                     User_id = table.Column<string>(nullable: true)
                 },

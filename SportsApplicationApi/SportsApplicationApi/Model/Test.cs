@@ -13,7 +13,8 @@ namespace SportsApplicationApi.Model
         [Display(Name = "Type")]
         public string type { get; set; }
         [Display(Name = "Date")]
-        public int date { get; set; }
+        // public int date { get; set; }
+        public DateTime Date { get; set; }
         [Display(Name = "Participants")]
         public int count { get; set; } = 0;
         public string User_id { get; set; }

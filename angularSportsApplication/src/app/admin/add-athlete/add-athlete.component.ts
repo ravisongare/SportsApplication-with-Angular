@@ -40,8 +40,10 @@ export class AddAthleteComponent implements OnInit {
    onSave(): void {
      this.result.distance = this.athleteForm.get('distance').value;
      this.result.user_id = this.athleteForm.get('user_id').value;
-     this.service.addAthlete(this.result).subscribe();
-     this.router.navigate(['/admin/tests/' + this.testid + '/detail']);
+     this.service.addAthlete(this.result).subscribe(
+       () => this.router.navigate(['/admin/tests/' + this.testid + '/detail'])
+     );
+
   }
 
 }

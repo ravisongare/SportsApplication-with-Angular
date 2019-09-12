@@ -3,6 +3,7 @@ import { AdminService } from '../admin.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Test } from '../models/test';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-test',
@@ -17,7 +18,8 @@ export class CreateTestComponent implements OnInit {
   constructor(private service: AdminService,
               private router: Router,
               private route: ActivatedRoute,
-              private fb: FormBuilder) { }
+              private fb: FormBuilder,
+              private location: Location) { }
 
   ngOnInit() {
     this.testform = this.fb.group({
@@ -29,7 +31,9 @@ export class CreateTestComponent implements OnInit {
   onSave(): void {
     this.test.type = this.testform.get('type').value;
     this.test.date = this.testform.get('date').value;
-    this.service.createTest(this.test).subscribe();
+    this.service.createTest(this.test).subscribe(
+      () => this.location.back()
+    );
   }
 
 }

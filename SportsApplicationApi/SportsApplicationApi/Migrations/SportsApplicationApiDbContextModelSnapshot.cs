@@ -182,9 +182,8 @@ namespace SportsApplicationApi.Migrations
 
             modelBuilder.Entity("SportsApplicationApi.Model.Athlete", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("name");
 
@@ -217,11 +216,11 @@ namespace SportsApplicationApi.Migrations
                     b.Property<string>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("User_id");
 
                     b.Property<int>("count");
-
-                    b.Property<int>("date");
 
                     b.Property<string>("type");
 

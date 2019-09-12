@@ -10,8 +10,8 @@ using SportsApplicationApi.Model;
 namespace SportsApplicationApi.Migrations
 {
     [DbContext(typeof(SportsApplicationApiDbContext))]
-    [Migration("20190902060031_initialCreates")]
-    partial class initialCreates
+    [Migration("20190912053427_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -184,9 +184,8 @@ namespace SportsApplicationApi.Migrations
 
             modelBuilder.Entity("SportsApplicationApi.Model.Athlete", b =>
                 {
-                    b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("name");
 
@@ -219,11 +218,11 @@ namespace SportsApplicationApi.Migrations
                     b.Property<string>("id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<DateTime>("Date");
+
                     b.Property<string>("User_id");
 
                     b.Property<int>("count");
-
-                    b.Property<int>("date");
 
                     b.Property<string>("type");
 
