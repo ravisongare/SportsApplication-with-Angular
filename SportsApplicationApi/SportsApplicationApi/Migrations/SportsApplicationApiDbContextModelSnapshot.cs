@@ -182,49 +182,49 @@ namespace SportsApplicationApi.Migrations
 
             modelBuilder.Entity("SportsApplicationApi.Model.Athlete", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("name");
+                    b.Property<string>("Name");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Athletes");
                 });
 
             modelBuilder.Entity("SportsApplicationApi.Model.Result", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("Distance");
+
                     b.Property<string>("Fitness");
 
-                    b.Property<int>("distance");
+                    b.Property<string>("TestId");
 
-                    b.Property<string>("test_id");
+                    b.Property<string>("UserId");
 
-                    b.Property<string>("user_id");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Results");
                 });
 
             modelBuilder.Entity("SportsApplicationApi.Model.Test", b =>
                 {
-                    b.Property<string>("id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Count");
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<string>("User_id");
+                    b.Property<string>("Type");
 
-                    b.Property<int>("count");
+                    b.Property<string>("UserId");
 
-                    b.Property<string>("type");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Tests");
                 });

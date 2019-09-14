@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SportsApplicationApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialCreates : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -51,43 +51,43 @@ namespace SportsApplicationApi.Migrations
                 name: "Athletes",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
-                    name = table.Column<string>(nullable: true)
+                    Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Athletes", x => x.id);
+                    table.PrimaryKey("PK_Athletes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Results",
                 columns: table => new
                 {
-                    id = table.Column<int>(nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    user_id = table.Column<string>(nullable: true),
-                    test_id = table.Column<string>(nullable: true),
-                    distance = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true),
+                    TestId = table.Column<string>(nullable: true),
+                    Distance = table.Column<int>(nullable: false),
                     Fitness = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Results", x => x.id);
+                    table.PrimaryKey("PK_Results", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tests",
                 columns: table => new
                 {
-                    id = table.Column<string>(nullable: false),
-                    type = table.Column<string>(nullable: true),
+                    Id = table.Column<string>(nullable: false),
+                    Type = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
-                    count = table.Column<int>(nullable: false),
-                    User_id = table.Column<string>(nullable: true)
+                    Count = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tests", x => x.id);
+                    table.PrimaryKey("PK_Tests", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

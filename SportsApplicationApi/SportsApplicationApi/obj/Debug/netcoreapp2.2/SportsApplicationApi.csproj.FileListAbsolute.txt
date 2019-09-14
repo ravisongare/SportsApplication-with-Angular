@@ -2,7 +2,6 @@ C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\Sports
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\bin\Debug\netcoreapp2.2\SportsApplicationApi.runtimeconfig.json
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\bin\Debug\netcoreapp2.2\SportsApplicationApi.runtimeconfig.dev.json
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\bin\Debug\netcoreapp2.2\SportsApplicationApi.dll
-C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.csprojAssemblyReference.cache
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.csproj.CoreCompileInputs.cache
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.RazorAssemblyInfo.cache
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.RazorAssemblyInfo.cs
@@ -12,3 +11,4 @@ C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\Sports
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\bin\Debug\netcoreapp2.2\SportsApplicationApi.pdb
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.dll
 C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.pdb
+C:\Users\ravisongare\Sports Application with Angular\SportsApplicationApi\SportsApplicationApi\obj\Debug\netcoreapp2.2\SportsApplicationApi.csprojAssemblyReference.cache

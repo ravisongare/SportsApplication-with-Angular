@@ -9,7 +9,7 @@ namespace SportsApplication.Models
 {
     public class AddAthlete
     {
-        public Result result { get; set; }
-        public List<IdentityUser> athlete { get; set; }
+        public Result Reesult { get; set; }
+        public List<IdentityUser> Athlete { get; set; }
     }
 }

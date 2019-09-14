@@ -4,5 +4,5 @@ type: string;
 date: Date;
 count: number;
 // tslint:disable-next-line: variable-name
-User_id: string;
+userid: string;
 }

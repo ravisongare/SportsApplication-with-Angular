@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
       // console.log(JSON.stringify(token));
       // tslint:disable-next-line: no-shadowed-variable
       const decode = this.jwtHelper.decodeToken(token);
-      this.service.name = 'ravi songare';
+      this.service.name = decode['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
       if (decode.Role === 'Athlete') {
       console.log('in login= ' + decode.Role);
       this.router.navigate(['athlete/test']);

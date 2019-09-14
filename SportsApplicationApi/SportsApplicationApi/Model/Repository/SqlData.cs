@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using SportsApplicationApi.Model;
 using System;
 using System.Collections.Generic;
@@ -29,8 +30,8 @@ namespace SportsApplication.Models
         
         public void AddParticipant(string id)
         {
-            var temp = db.Tests.Single(r => r.id .Equals(id));
-            temp.count = temp.count + 1;
+            var temp = db.Tests.Single(r => r.Id .Equals(id));
+            temp.Count = temp.Count + 1;
             
         }
 
@@ -56,8 +57,8 @@ namespace SportsApplication.Models
              var t=from a in db.Users
                    select new Athlete
                    {
-                       id = a.Id,
-                       name = a.Email
+                       Id = a.Id,
+                       Name = a.Email
 
                    };
             return t.ToList();
@@ -65,46 +66,53 @@ namespace SportsApplication.Models
 
         public List<Test> GetAllTestById(string id)
         {
-            return db.Tests.Where(t => t.User_id.Equals(id)).ToList();
+            var test= db.Tests.Where(t => t.UserId.Equals(id)).ToList();
+            foreach (var temp in test)
+            {
+                var count = db.Results.Where(r => r.TestId == temp.Id).Count();
+                temp.Count = count;
+            }
+            
+            return test;
             
         }
 
         public Athlete GetAthlete(string id)
         {
-            return db.Athletes.SingleOrDefault(m=>m.id.Equals(id));
+            return db.Athletes.SingleOrDefault(m=>m.Id.Equals(id));
         }
         public IQueryable<AthlteDetail> getAthleteDetail(string id)
         {
 
             return from t in db.Tests
                    join r in db.Results
-                   on t.id equals r.test_id
-                   where r.user_id.Equals(id)
+                   on t.Id equals r.TestId
+                   where r.UserId.Equals(id)
                    select new AthlteDetail
-                   { type = t.type, Date = t.Date, resultId = r.id };
+                   { Type = t.Type, Date = t.Date, ResultId = r.Id };
         }
 
         public List<Detail> GetDeatail(string id)
         {
              var r=from a in db.Users
                    join r1 in db.Results
-                   on a.Id equals r1.user_id
-                   where r1.test_id.Equals( id)
-                   orderby r1.distance descending
+                   on a.Id equals r1.UserId
+                   where r1.TestId.Equals( id)
+                   orderby r1.Distance descending
                    select new Detail
-                   { name = a.UserName, distance = r1.distance, fitness = r1.Fitness,athleteId=a.Id,resultId=r1.id };
+                   { Name = a.UserName, Distance = r1.Distance, Fitness = r1.Fitness,AthleteId=a.Id,ResultId=r1.Id };
             return r.ToList();
         }
 
         public Result getResult(string testId, string UserId)
         {
-            return db.Results.FirstOrDefault(t => t.test_id.Equals(testId) && t.user_id.Equals(UserId));
+            return db.Results.FirstOrDefault(t => t.TestId.Equals(testId) && t.UserId.Equals(UserId));
         }
 
     
         public Test GetTestByid(string id)
         {
-            return db.Tests.SingleOrDefault(m=>m.id.Equals(id));
+            return  db.Tests.FirstOrDefault(m=>m.Id==id);
         }
 
      
@@ -115,22 +123,22 @@ namespace SportsApplication.Models
 
         public IEnumerable<Result> GetResultsById(string id)
         {
-            return db.Results.Where(t => t.test_id.Equals(id));
+            return db.Results.Where(t => t.TestId.Equals(id));
         }
         public void UpdateResult(Result result)
         {
             var query = (from r in db.Results
-                         where r.id.Equals(result.id)
+                         where r.Id.Equals(result.Id)
                          select r).Single();
-            query.user_id = result.user_id;
-            query.test_id = result.test_id;
-            query.distance = result.distance;
+            query.UserId = result.UserId;
+            query.TestId = result.TestId;
+            query.Distance = result.Distance;
             query.Fitness = result.Fitness;
             //db.Results.Update(result);
         }
         public Result getResultById(int id)
         {
-            return db.Results.SingleOrDefault(m => m.id == id);
+            return db.Results.SingleOrDefault(m => m.Id == id);
         }
 
         public void DeleteResult(Result result)
@@ -140,8 +148,8 @@ namespace SportsApplication.Models
 
         public void RemoveParticipant(string id)
         {
-            var temp = db.Tests.Single(r => r.id.Equals(id));
-            temp.count = temp.count - 1;
+            var temp = db.Tests.Single(r => r.Id.Equals(id));
+            temp.Count = temp.Count - 1;
         }
 
        public string getRole(IdentityUser current)

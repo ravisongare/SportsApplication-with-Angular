@@ -62,7 +62,8 @@ namespace SportsApplication.Models
         Task Signout();
 
         Task<IdentityResult> CreateRole(IdentityRole identityRole);
+       
 
-       //IdentityUser CurrentUser();
+        //IdentityUser CurrentUser();
     }
 }

@@ -9,14 +9,14 @@ namespace SportsApplicationApi.Model
     public class Test
     {
         [Key]
-        public string id { get; set; }
+        public string Id { get; set; }
         [Display(Name = "Type")]
-        public string type { get; set; }
+        public string Type { get; set; }
         [Display(Name = "Date")]
         // public int date { get; set; }
         public DateTime Date { get; set; }
         [Display(Name = "Participants")]
-        public int count { get; set; } = 0;
-        public string User_id { get; set; }
+        public int Count { get; set; } = 0;
+        public string UserId { get; set; }
     }
 }

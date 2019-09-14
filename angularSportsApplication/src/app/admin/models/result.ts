@@ -1,9 +1,9 @@
 export class Result {
   id: number;
   // tslint:disable-next-line: variable-name
-  user_id: string;
+  userId: string;
   // tslint:disable-next-line: variable-name
-  test_id: string;
+  testId: string;
   distance: number;
   fitness: string;
 }

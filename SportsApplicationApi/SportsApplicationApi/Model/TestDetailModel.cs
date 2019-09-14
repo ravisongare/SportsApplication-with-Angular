@@ -8,7 +8,7 @@ namespace SportsApplicationApi.Model
 {
     public class TestDetailModel
     {
-        public Test test { get; set; }
-        public List<Detail> detail { get; set; }
+        public Test Test { get; set; }
+        public List<Detail> Detail { get; set; }
     }
 }

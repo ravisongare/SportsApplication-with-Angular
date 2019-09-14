@@ -37,7 +37,7 @@ namespace SportsApplicationApi.Controllers
 
         // GET: api/admin/test/5/detail
         [HttpGet, Authorize(AuthenticationSchemes = "Bearer"), Route("test/{id}/detail")]
-        public ActionResult<List<TestDetailModel>> TestDetails([FromRoute]string id)
+        public async Task<ActionResult<List<TestDetailModel>>> TestDetails([FromRoute]string id)
         {
             TestDetailModel testDetail;
             var test = unitOfWork.data.GetTestByid(id);
@@ -51,7 +51,7 @@ namespace SportsApplicationApi.Controllers
             {
                 return NotFound();
             }
-            testDetail = new TestDetailModel { test = test, detail = testWithAthlete };
+            testDetail = new TestDetailModel { Test = test, Detail = testWithAthlete };
             return Ok(testDetail);
         }
 
@@ -75,10 +75,10 @@ namespace SportsApplicationApi.Controllers
         [HttpPut, Authorize(AuthenticationSchemes = "Bearer"), Route("test/edit")]
         public IActionResult Edit([FromBody] Result result)
         {
-            var tmp = unitOfWork.data.GetResultsById(result.test_id);
+            var tmp = unitOfWork.data.GetResultsById(result.TestId);
             foreach (var temp in tmp)
             {
-                if (result.user_id == temp.user_id && result.id != temp.id)
+                if (result.UserId == temp.UserId && result.Id != temp.Id)
                 {
 
                     var message = "Athlete already exist";
@@ -125,7 +125,7 @@ namespace SportsApplicationApi.Controllers
         {
             var result = unitOfWork.data.getResultById(resultid);
             unitOfWork.data.DeleteResult(result);
-            unitOfWork.data.RemoveParticipant(result.test_id);
+            unitOfWork.data.RemoveParticipant(result.TestId);
             unitOfWork.commit();
             return Ok();
             //return RedirectToAction("Details", "Test", new { id = result.test_id });
@@ -149,28 +149,28 @@ namespace SportsApplicationApi.Controllers
         public IActionResult AddAthlete([FromBody] Result result)
         {
             // var currentUser = HttpContext.User;
-            var tmp1 = unitOfWork.data.GetResultsById(result.test_id);
+            var tmp1 = unitOfWork.data.GetResultsById(result.TestId);
             foreach (var tmp in tmp1)
             {
-                if (result.user_id == tmp.user_id)
+                if (result.UserId == tmp.UserId)
                 {
                   var message = "This Athlete Already Exist";
                     return BadRequest(message); 
 
                 }
             }
-            if (result.distance <= 1000)
+            if (result.Distance <= 1000)
                 result.Fitness = "Below Average";
-            if (result.distance > 1000 && result.distance <= 2000)
+            if (result.Distance > 1000 && result.Distance <= 2000)
                 result.Fitness = "Average";
-            if (result.distance > 2000 && result.distance <= 3500)
+            if (result.Distance > 2000 && result.Distance <= 3500)
                 result.Fitness = "Good";
-            if (result.distance > 3500)
+            if (result.Distance > 3500)
                 result.Fitness = "Very Good";
 
             unitOfWork.data.AddResult(result);
             unitOfWork.commit();
-            unitOfWork.data.AddParticipant(result.test_id);
+       //     unitOfWork.data.AddParticipant(result.TestId);
             unitOfWork.commit();
             return Ok();
             //return RedirectToAction("Details", "Test", new { id = result.test_id });
@@ -194,7 +194,7 @@ namespace SportsApplicationApi.Controllers
 
         // Post: api/admin/test/5/delete
         [HttpDelete, Authorize(AuthenticationSchemes = "Bearer"), Route("test/{testid}/delete")]
-        public IActionResult DeleteConfirmed([FromRoute]string testid)
+        public  IActionResult DeleteConfirmed([FromRoute]string testid)
         {
             var test = unitOfWork.data.GetTestByid(testid);
             unitOfWork.data.DeleteTest(test);
@@ -207,7 +207,8 @@ namespace SportsApplicationApi.Controllers
 
                 }
             unitOfWork.commit();
-            return RedirectToAction("Index");
+            return Ok();
+           // return RedirectToAction("Index");
         }
 
         // Post: api/admin/test/create
@@ -226,7 +227,7 @@ namespace SportsApplicationApi.Controllers
         {
             var currentUser = HttpContext.User;
             var id = currentUser.Claims.FirstOrDefault(c => c.Type == "id").Value;
-            test.User_id = id;
+            test.UserId = id;
             unitOfWork.data.Addtest(test);
             unitOfWork.commit();
             return Ok();

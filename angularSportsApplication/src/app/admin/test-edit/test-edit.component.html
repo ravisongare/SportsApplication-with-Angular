@@ -7,8 +7,8 @@
     <label for="athleteId" class="control-label"></label>
     <div>
 
-    <select name="userid" id="athleteId"  class="form-control" formControlName="userid" >
-      <option *ngFor="let item of athlete " [ngValue]="item.id">{{item.name}}</option>
+    <select required class="form-control" formControlName="userid" >
+      <option  *ngFor="let item of athlete" [ngValue]="item.id">{{item.name}}</option>
     </select>
     </div>
     </div>

@@ -17,22 +17,22 @@ namespace SportsApplication.Models
         }
         public IEnumerable<Result> GetResultsById(string id)
         {
-            return db.Results.Where(t => t.test_id.Equals(id));
+            return db.Results.Where(t => t.TestId.Equals(id));
         }
         public void UpdateResult(Result result)
         {
             var query = (from r in db.Results
-                         where r.id.Equals(result.id)
+                         where r.Id.Equals(result.Id)
                          select r).Single();
-            query.user_id = result.user_id;
-            query.test_id = result.test_id;
-            query.distance = result.distance;
+            query.UserId = result.UserId;
+            query.TestId = result.TestId;
+            query.Distance = result.Distance;
             query.Fitness = result.Fitness;
             //db.Results.Update(result);
         }
         public Result getResultById(int id)
         {
-            return db.Results.SingleOrDefault(m => m.id == id);
+            return db.Results.SingleOrDefault(m => m.Id == id);
         }
 
         public void DeleteResult(Result result)
@@ -42,8 +42,8 @@ namespace SportsApplication.Models
 
         public void RemoveParticipant(string id)
         {
-            var temp = db.Tests.Single(r => r.id.Equals(id));
-            temp.count = temp.count - 1;
+            var temp = db.Tests.Single(r => r.Id.Equals(id));
+            temp.Count = temp.Count - 1;
         }
 
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EditAthleteresult } from '../models/editAthleteResult';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from '../admin.service';
-import { FormBuilder, FormGroup, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
 import { asapScheduler } from 'rxjs';
 import { Athlete } from '../models/athlete';
 import { Result } from '../models/result';
@@ -31,8 +31,8 @@ export class TestEditComponent implements OnInit {
 
   ngOnInit() {
    this.testForm = this.fb.group({
-        userid: '',
-      distance: ''
+        userid: ['' , Validators.required],
+      distance: ['', Validators.required]
 
    });
 
@@ -52,7 +52,7 @@ export class TestEditComponent implements OnInit {
   patch(): void {
     this.testForm.patchValue({
       distance: this.editTest.result.distance,
-       userid: this.editTest.result.user_id
+       userid: this.editTest.result.userId
      });
     this.athlete = this.editTest.athletes;
    // this.testForm.setControl('athletes', this.fb.array(this.editTest.athletes));
@@ -61,19 +61,21 @@ export class TestEditComponent implements OnInit {
   onSave(): void {
    console.log('In onSave form value=' + this.testForm.get('userid').value);
    this.result = this.editTest.result;
-   this.result.user_id = this.testForm.get('userid').value;
+   this.result.userId = this.testForm.get('userid').value;
    this.result.distance = this.testForm.get('distance').value;
   // var p = { ...this.editTest.result, ...this.testForm.value};
    // this.editTest.result.userid = this.testForm.controls.userid.value;
   //  this.editTest.result.distance = this.testForm.controls.distance.value;
   // console.log("(In onSave)before save() = "+this.result.user_id);
    this.save();
-   console.log('(In onSave)data=' +  this.result.user_id);
+   console.log('(In onSave)data=' +  this.result.userId);
   }
   save() {
   //  console.log("save() = "+this.result);
-    this.service.updateResult(this.result).subscribe();
-    this.router.navigate(['/admin/tests/' + this.result.test_id + '/detail']);
+    this.service.updateResult(this.result).subscribe(
+  () =>  this.location.back()
+    );
+
   }
 
 }

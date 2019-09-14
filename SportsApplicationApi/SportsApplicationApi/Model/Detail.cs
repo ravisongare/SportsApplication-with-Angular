@@ -7,10 +7,10 @@ namespace SportsApplication.Models
 {
     public class Detail
     {
-        public string athleteId { get; set; }
-        public string name { get; set; }
-        public int distance { get; set; }
-        public string fitness { get; set; }
-        public int resultId { get; set; }
+        public string AthleteId { get; set; }
+        public string Name { get; set; }
+        public int Distance { get; set; }
+        public string Fitness { get; set; }
+        public int ResultId { get; set; }
     }
 }

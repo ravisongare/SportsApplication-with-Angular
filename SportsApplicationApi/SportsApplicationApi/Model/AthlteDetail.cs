@@ -8,8 +8,8 @@ namespace SportsApplication.Models
     public class AthlteDetail
     {
 
-        public int resultId { get; set; }
-        public string type { get; set; }
+        public int ResultId { get; set; }
+        public string Type { get; set; }
         public  DateTime Date { get; set; }
     }
 

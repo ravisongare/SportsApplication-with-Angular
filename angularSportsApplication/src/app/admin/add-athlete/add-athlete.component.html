@@ -1,4 +1,3 @@
-<p>add-athlete works!</p>
 
 <h1>AddAthlete</h1>
 <div class="row">
@@ -22,5 +21,10 @@
                 <button class="btn btn-primary" type="submit" value="Save"  (click)="onSave()">Save</button>
             </div>
         </form>
+
+          <div *ngIf="true" class="danger" style="color:red">
+            {{errorMessage}}
+          </div>
+
     </div>
 </div>

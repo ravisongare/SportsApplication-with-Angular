@@ -8,12 +8,11 @@ namespace SportsApplicationApi.Model
 {
     public class Result
     {
-        public int id { get; set; }
-        public string user_id { get; set; }
-        public string test_id { get; set; }
-        [Required]
-        [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
-        public int distance { get; set; }
+        public int Id { get; set; }
+        public string UserId { get; set; }
+        public string TestId { get; set; }
+        
+        public int Distance { get; set; }
         public String Fitness { get; set; }
     }
 }

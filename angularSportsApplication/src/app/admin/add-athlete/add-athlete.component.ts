@@ -15,6 +15,7 @@ export class AddAthleteComponent implements OnInit {
    athleteForm: FormGroup;
    athletes: Athlete;
    result =  new Result();
+   errorMessage = '';
   constructor(private service: AdminService,
               private router: Router,
               private route: ActivatedRoute,
@@ -22,7 +23,7 @@ export class AddAthleteComponent implements OnInit {
 
   ngOnInit() {
    this.testid = this.route.snapshot.paramMap.get('testid');
-   this.result.test_id = this.testid;
+   this.result.testId = this.testid;
    this.athleteForm = this.fb.group({
      distance: '',
      user_id: ''
@@ -32,16 +33,27 @@ export class AddAthleteComponent implements OnInit {
      data => {
        this.athletes = data;
        console.log(JSON.stringify(data));
-      }
+      },
+
+
    );
 
   }
 
    onSave(): void {
+
      this.result.distance = this.athleteForm.get('distance').value;
-     this.result.user_id = this.athleteForm.get('user_id').value;
+     this.result.userId = this.athleteForm.get('user_id').value;
      this.service.addAthlete(this.result).subscribe(
-       () => this.router.navigate(['/admin/tests/' + this.testid + '/detail'])
+       () => this.router.navigate(['/admin/tests/' + this.testid + '/detail']),
+       // tslint:disable-next-line: no-unused-expression
+       // tslint:disable-next-line: no-debugger
+
+       (error) =>  {
+
+             this.errorMessage = 'Athlete Already Exist !';
+
+        }
      );
 
   }

@@ -20,7 +20,8 @@ export class AppComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private service: AppmoduleService) { }
+              private service: AppmoduleService,
+              private loginservice: AppmoduleService ) { }
 
   ngOnInit(): void {
     // tslint:disable-next-line: no-unused-expression
@@ -35,8 +36,11 @@ export class AppComponent implements OnInit {
 
               logout(): void {
                 localStorage.removeItem('jwt');
-               // this.service.islogin = false;
+                this.loginservice.name = '';
                 console.log('logout done');
+                }
+                getUserName(): string {
+                  return this.loginservice.name;
                 }
   // getData(): void {
   //    this.http.get<string>('http://localhost:5000/api/values')

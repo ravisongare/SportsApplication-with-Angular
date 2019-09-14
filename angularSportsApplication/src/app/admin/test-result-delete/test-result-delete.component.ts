@@ -34,7 +34,7 @@ export class TestResultDeleteComponent implements OnInit {
   }
   deleteConfirm(): void {
  this.service.deleteTestresultConfirm(this.reultid).subscribe(
-   () => { this.router.navigate(['/admin/tests/' + this.result.test_id + '/detail']);
+   () => { this.router.navigate(['/admin/tests/' + this.result.testId + '/detail']);
 
    }
  );
